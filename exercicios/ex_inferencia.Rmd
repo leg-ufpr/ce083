@@ -1,0 +1,261 @@
+---
+title: "CE083 - Estatística Computacional I"
+author: "Nome (GRR)"
+date: "Dezembro, 2016"
+output: html_document
+---
+
+# Exercício: inferência
+
+## Introdução
+
+Um artigo publicado na revista [Technometrics](http://amstat.tandfonline.com/loi/tech), de SC Narula, e JF Wellington (*Prediction, linear regression, and a minimum sum of relative errors*), apresenta dados de preços de vendas e taxas anuais para 24 casas.
+
+## Dados
+
+Os dados do artigo mencionado estão disponíveis em
+
+```{r}
+url <- "http://www.leg.ufpr.br/~fernandomayer/dados/montgomery_11-4.txt"
+```
+
+Com isso:
+
+- Faça a importação dos dados, verifique sua estrutura e faça um sumário estatístico.
+
+```{r}
+## Importação
+
+## Estrutura
+
+## Sumário
+```
+
+- Faça um gráfico apropriado para relacionar o preço de vendas às taxas pagas (o preço de venda varia conforma as taxas, ou seja, o preço é a variável dependente).
+
+```{r}
+
+```
+
+
+## Ajustando um modelo linear
+
+Um **modelo linear** entre duas variáveis $X$ e $Y$, é definido
+matematicamente como uma equação com dois parâmetros desconhecidos,
+
+$$
+	Y = \beta_0 + \beta_1 X
+$$
+
+Assim, dados $n$ pares de valores, $(X_1, Y_1), (X_2, Y_2), \ldots,
+(X_n, Y_n)$, se for admitido que $Y$ é função linear de $X$, pode-se
+estabelecer uma regressão linear simples, cujo modelo estatístico é
+
+$$
+    Y_i = \beta_0 + \beta_1 X_i + e_i, \quad i = 1, 2, \ldots, n
+$$
+
+Como através de uma amostra obtemos uma estimativa da verdadeira
+equação de regressão, denominamos
+
+$$
+    \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i
+$$
+
+ou seja, $\hat{Y}_i$ é o valor **estimado** de $Y_i$, através das
+**estimativas** de $\beta_0$ e $\beta_1$, que chamaremos de
+$\hat{\beta}_0$ e $\hat{\beta}_1$. Para cada valor de $Y_i$, temos um
+valor $\hat{Y}_i$ estimado pela equação de regressão,
+
+$$
+	Y_i = \hat{Y}_i + e_i
+$$
+
+Portanto, o erro (ou desvio) de cada observação em relação ao modelo
+adotado será
+
+$$
+\begin{align}
+	e_i &= Y_i - \hat{Y}_i \\
+	e_i &= Y_i - (\beta_0 + \beta_1 X_i)
+\end{align}
+$$
+
+Comumente se assume que os erros possuem uma distribuição normal com média zero e variância constante, ou seja, $e_i \sim \text{N}(0, \sigma^2)$.
+
+Através da **solução de mínimos quadrados**, obtemos as expressões para estimar os parâmetros $\beta_0$ e $\beta_1$:
+
+$$
+\begin{align}
+    \hat{\beta}_1 &= \frac{\sum_{i=1}^{n} X_iY_i - \frac{\sum_{i=1}^{n}
+        X_i \sum_{i=1}^{n} Y_i}{n}}{\sum_{i=1}^{n}X_i^2 -
+      \frac{(\sum_{i=1}^{n} X_i)^2}{n}} \\
+    & \\
+    \hat{\beta_0} &= \bar{Y} - \hat{\beta}_1 \bar{X}
+\end{align}
+$$
+
+onde
+
+$$
+\begin{align}
+    \bar{Y} = \frac{1}{n} \sum_{i=1}^{n} Y_i \qquad \text{e} \qquad
+    \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i
+\end{align}
+$$
+
+Como vimos pelas soluções acima, primeiro calculamos $\hat{\beta_1}$, e
+depois $\hat{\beta_0}$. Para facilitar as contas, vamos criar objetos
+`X` e `Y` com as colunas `Venda` e `Taxa` (saber quem é `X` e quem é `Y` faz parte da interpretação do problema), e `n` que é o tamanho
+da amostra
+
+```{r}
+## Defina X, Y, e n
+
+```
+
+Agora calculamos $\hat{\beta_1}$ com a solução acima
+
+```{r}
+## Crie um objeto chamado beta1
+
+```
+
+E $\hat{\beta_0}$ com a solução acima
+
+```{r}
+## Crie um objeto chamado beta0
+
+```
+
+Para conferir os seus cálculos e prosseguir com a análise, ajuste um modelo linear entre as duas variáveis consideradas, usando a função `lm()`, e verifique se os coeficientes estimados pela função são os mesmos que você calculou à mão.
+
+```{r}
+## Crie um objeto chamado mod com o modelo ajustado
+
+```
+
+Para avaliar a significância do modelo, podemos realizar uma **Análise
+de Variância** (ANOVA) para a regressão. Como vimos na estimação dos
+parâmetros, o objetivo é encontrar parâmetros que façam com que a soma
+de quadrados dos resíduos seja mínima. Podemos particionar a soma de
+quadrados da seguinte forma:
+
+$$
+SQTot = SQMod + SQRes
+$$
+
+Portanto, se um modelo é bem ajustado, esperamos que a soma de quadrados
+do modelo $SQMod$ seja grande, e a $SQRes$ sejá mínima. Um quadro de
+ANOVA para o modelo irá testar, através de um teste F, se a soma de
+quadrados do modelo é significativamente diferente de zero. Para fazer
+essa ANOVA, usamos a função `anova()`
+
+```{r}
+## Quadro de Análise de Variância
+
+```
+
+Uma parte importante em uma análise de regressão linear é a verificação
+dos resíduos do modelo, ou seja, os desvios de cada valor observado $Y$
+em relação aos valores **preditos** pelo modelo, $\hat{Y}$. Como vimos que a suposição do modelo é de que os resíduos possuam uma distribuição normal com média 0 e variância constante, $e_i \sim \text{N}(0, \sigma^2)$, então podemos verificar essa suposição fazendo um histograma destes resíduos. Para isso, podemos extrair os resíduos diretamente do objeto `mod` com a função `residuals()`, e fazer o histograma destes resíduos
+
+```{r}
+## Faça um histograma dos resíduos do modelo
+
+```
+
+Ainda com o objeto `mod`, podemos ajustar o modelo graficamente
+ao gráfico da relação entre `Venda` e `Taxas`. Para isso, usamos uma função `abline()`, utilizada para inserir linhas em gráficos. 
+
+```{r}
+## Faça o gráfico da relação entre Taxa e Vendas, e insira a linha do
+## modelo com abline()
+
+```
+
+Com os resultados que você obteve acima, responda:
+
+1. Existe uma relação significativa entre preço de venda e taxas? Se sim, de que tipo (positiva,	negativa)?
+2. Pelo resultado da ANOVA, o modelo pode ser considerado significativo (ou seja, uma variável pode ser explicada pela outra)?
+3. Através do histograma dos resíduos, pode-se dizer que os pressupostos do modelo foram atendidos (ou seja, os resíduos possuem uma distibyuição normal com média em torno do zero)?
+
+## Inferência sobre a média de vendas
+
+Sabemos que o intervalo de confiança para média de uma distribuição
+normal com variância desconhecida, para uma amostra de tamanho $n$ é
+dado por:
+
+$$
+\left(\bar{x} - t_t \sqrt{\frac{s^2}{n}} \quad, \quad
+  \bar{x} + t_t \sqrt{\frac{s^2}{n}} \right)
+$$
+
+onde $t_t$ é o quantil de ordem $1-\alpha/2$ da distribuição $t$ de 
+Student, com $n-1$ graus de liberdade.
+
+Considerando que estamos interessados em obter um intervalo de confiança para a média de `Vendas`, faça o que se pede:
+
+- Calcule o tamanho da amostra, a média e a variância amostral da coluna `Vendas`
+
+```{r}
+## Tamanho da amostra (n), média e variância de Venda
+
+```
+
+- Monte o intervalo de confiança utilizando os quantis da distribuição $t$, para obter um IC de 95\% de confiança.
+
+```{r}
+## IC com 95% de confiança
+
+```
+
+Além do intervalo de confiança, podemos realizar um teste de hipótese para testar se a média de vendas é igual a determinado valor. Os procedimentos gerais para este teste de hipótese são:
+
+1. Definir a hipótese nula ($H_0$) e a alternativa ($H_1$)
+2. Definir um nível de **significância** $\alpha$ (ex.: $\alpha =
+  0,05$), que irá determinar o nível de **confiança** $100(1-\alpha)\%$
+  do teste
+3. Determinar a **região de rejeição** com base no nível de
+  significância $\rightarrow$ valor crítico
+4. Calcular a **estatística de teste**, sob a hipótese nula
+$$
+	t_{calc} = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}
+$$
+5. Rejeitar a hipótese nula se a estatística de teste calculada
+  estiver dentro da região de rejeição ($|t_{calc}| > |t_{crit}|$)
+
+Portanto, se desejamos testar a hipótese de que o preço médio de venda é igual 35, temos as seguintes hipóteses:
+
+$$
+\begin{align}
+\text{H}_0: \mu = 35 \\
+\text{H}_1: \mu \neq 35 \\
+\end{align}
+$$
+
+Usando um nível de significância $\alpha = 0,05$, realize este teste de hipótese passo-a-passo, calculando: o valor crítico de $t$, o valor de $t$ calculado, e o p-valor do teste.
+
+```{r}
+## Valor de alpha
+
+## Valor crítico de t
+
+## Estatística de teste
+
+## tcalc > tcrit?
+
+## Calculano o p-valor
+
+```
+
+Use a função `t.test()` para conferir os cálculos que você realizou acima. 
+
+```{r}
+
+```
+
+Qual a sua conclusão a respeito do teste de hipótese?
+
+
+

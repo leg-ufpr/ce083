@@ -1,6 +1,6 @@
 # CE083
 
-[![Build Status](https://travis-ci.org/fernandomayer/ce083.svg?branch=master)](https://travis-ci.org/fernandomayer/ce083)
+[![Build Status](https://travis-ci.org/leg-ufpr/ce083.svg?branch=master)](https://travis-ci.org/leg-ufpr/ce083)
 
 ## CE083 - Estatística Computacional I
 
@@ -9,7 +9,10 @@ ministrada na UFPR, para o curso de Estatística.
 
 Este repositório contém todo o material de aula e os arquivos
 necessários para gerar a página da disciplina, disponível em:
-http://leg.ufpr.br/~fernandomayer/aulas/ce083/
+http://cursos.leg.ufpr.br/ce083.
+
+O livro-texto da disciplina pode ser consulato em:
+http://cursos.leg.ufpr.br/ecr.
 
 ### Para gerar o site
 

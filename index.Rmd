@@ -13,12 +13,10 @@ source("setup_knitr.R")
 
 <!-- <div class="alert alert-danger" role="alert"> -->
 <!-- **AVISO:** -->
-
 <!-- - O exame final está marcado para o dia 14/12 (quinta-feira) às 20:40 no -->
 <!--   DINF. -->
 <!-- - O exame será em Rmarkdown e compreende toda a matéria. -->
 <!-- - O exame será individual e sem consulta. -->
-
 <!-- </div> -->
 
 # Detalhes da oferta da disciplina

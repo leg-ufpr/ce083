@@ -26,6 +26,8 @@ navbar:
       href: referencias.html
     - text: "Recursos"
       href: recursos.html
+    - text: "Notas"
+      href: notas.html
     - text: "Materiais"
       menu:
       - text: "Configurações iniciais"

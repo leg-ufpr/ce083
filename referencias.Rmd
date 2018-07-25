@@ -5,8 +5,17 @@ output:
     toc: false
 ---
 
-## Referências básicas
+## Livro-texto
 
+O curso segue basicamente a estrutura do livro abaixo (disponível
+*online*, em PDF e EPUB). No entanto, as demais referências são
+igualmente importantes.
+
+- Mayer, FP; Bonat, WH; Zeviani, WM; Krainski, EK; Ribeiro Jr., PJ.
+  **Estatística computacional com R**. DEST/UFPR, 2018. Disponível em:
+  http://cursos.leg.ufpr.br/ecr/.
+
+## Referências básicas
 
 - Dalgaard, P.
   [Introductory statistics with R](http://www.springer.com/us/book/9780387790534).

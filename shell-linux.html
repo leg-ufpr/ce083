@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Introdução ao Shell Linux</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-102804671-2', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">CE083</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="aulas.html">Aulas</a>
+</li>
+<li>
+  <a href="referencias.html">Referências</a>
+</li>
+<li>
+  <a href="recursos.html">Recursos</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Materiais
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Configurações iniciais</li>
+    <li>
+      <a href="c3sl-sistemas.html">Uso dos sistemas do C3SL [HTML]</a>
+    </li>
+    <li>
+      <a href="http://fernandomayer.github.io/linux-intro">Introdução ao uso do Linux [HTML,slides]</a>
+    </li>
+    <li>
+      <a href="shell-linux.html">Introdução ao Shell Linux [HTML]</a>
+    </li>
+    <li>
+      <a href="R-instalacao.html">Guia de instalação do R [HTML]</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Exercícios</li>
+    <li>
+      <a href="exercicios/ex_objetos.pdf">Comandos básicos e classes de objetos [PDF]</a>
+    </li>
+    <li>
+      <a href="exercicios/ex_AED1.R">Análise exploratória de dados 1 [R]</a>
+    </li>
+    <li>
+      <a href="exercicios/ex_AED2.R">Análise exploratória de dados 2 [R]</a>
+    </li>
+    <li>
+      <a href="exercicios/ex_inferencia.Rmd">Inferência e regressão [Rmd]</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/leg-ufpr/ce083">
+    <span class="fa fa-github fa-lg"></span>
+     
+    GitHub
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Introdução ao Shell Linux</h1>
+
+</div>
+
+
+<div id="introducao" class="section level1">
+<h1>Introdução</h1>
+<p>Em um alto nível, computadores fazem quatro coisas:</p>
+<ul>
+<li>Rodam programas</li>
+<li>Armazenam dados</li>
+<li>Comunicam-se entre eles</li>
+<li>Interagem com humanos</li>
+</ul>
+<p>A interação com humanos pode ser feita de diferentes maneiras, mas a que mais conhecemos é atrave’sde um teclado, mouse e monitor. Embora a maioria dos sistemas operacionais atuais se comuniquem com humanos através de janelas, ícones e botões, essa tecnologia só começou a se popularizar em meados dos anos 1980.</p>
+<p>Este tipo de interface é chamada de <strong>interface gráfica do usuário</strong> (GUI, <em>graphical user interface</em>). Antes dessa fase, a interação com computadores se resumia a comandos digitados em um <em>terminal</em>, uma interface chamada de <strong>interface por linha de comando</strong> (CLI, <em>command-line interface</em>). A CLI consiste no processo em um <strong>loop ler-avaliar-imprimir</strong> (REPL, <em>read-evaluate-print loop</em>). Ou seja, quando um usuário digita um comando e aperta <kbd>Enter</kbd>, o computador lê, executa e imprime uma saída.</p>
+<p>Com esta descrição, pode parecer que o usuário envia um comando direto para o computador, e o computador envia um resultado direto para o usuário. Na verdade, existe um programa intermediário, chamado de <strong>shell</strong>. O que um usuário digita é enviado para o shell, que então determina a execução pelo computador.</p>
+<p>O shell é um programa como qualquer outro. O que ele tem de especial é que seu trabalho é executar outros programas ao invés de fazer cálculos propriamente ditos. O shell mais popular se chama <strong>Bash</strong>, e é o padrão na maioria das distribuições Linux.</p>
+<p>Usar o Bash é muito mais parecido com programação do que com usar um mouse para executar programas. Alguns comandos podem parecer “estranhos” em um primeiro momento, e você pode se sentir como se estivesse voltando ao passado para usar o computador quando não existiam GUIs (apenas CLIs, como o DOS por exemplo). No entanto, com apenas alguns comandos você será capaz de executar diversas tarefas rotineiras de maneira muito mais rápida, e principalmente automatizar tarefas (com um pouco mais de dedicação).</p>
+<p>Possui r familiaridade com o shell é essencial para rodar uma variedade de ferramentas especializadas, como por exemplo servidores remotos de alta-performance. Como clusters e computação em nuvem estão se tornando cada vez mais popular para análise de grandes bases de dados, ser capaz de interagir com estes sistemas é uma habilidade essencial.</p>
+</div>
+<div id="navegando-por-arquivos-e-diretorios" class="section level1">
+<h1>Navegando por arquivos e diretórios</h1>
+<p>A parte do sistema operacional responsável por gerenciar arquivos e diretórios é chamada de <strong>sistema de arquivos</strong>. Ele organiza nossos dados em arquivos que contém informação, e em diretórios (também chamados de “pasta”) que contém arquivos e outros diretórios.</p>
+<p>Diversos comandos são utilizados para criar, inspecionar, renomear e deletar arquivos e diretórios. Para começar a explorá-los, abra uma janela de terminal (shell). A primeira coisa que você verá é algo como:</p>
+<pre class="sh"><code>[fpmayer@turing ~]$</code></pre>
+<p>que corresponde ao seu nome de usuário (<code>fpmayer</code> nesse caso), o nome dado ao seu computador (<code>turing</code> nesse caso) e um til (<code>~</code>). O til nada mais é do que um atalho (<em>alias</em>) para a sua pasta pessoal (que nesse caso é <code>/home/fpmayer</code>). Em seguida o símbolo de <code>$</code> é o <strong>prompt</strong>, que indica que o shell está aguardando algum comando. Dependendo do seu sistema operacional, o prompt pode ser diferente, ou pode haver informações diferentes nessa linha, o que não altera em nada os comandos do shell.</p>
+<div class="panel panel-warning">
+<div class="panel-heading">
+Atenção!
+</div>
+<div class="panel-body">
+Daqui em diante só serão mostrados os comandos do shell, omitindo o prompt e qualquer outra informação adicional.
+</div>
+</div>
+<p>Digite o comando <code>whoami</code> e aperte <kbd>Enter</kbd>. O resultado deste comando deve ser seu nome de usuário:</p>
+<pre class="sh"><code>whoami</code></pre>
+<p>Mais especificamente, quando digitamos <code>whoami</code> o shell:</p>
+<ol style="list-style-type: decimal">
+<li>Encontra um programa chamado <code>whoami</code></li>
+<li>Executa o programa</li>
+<li>Mostra a saída do programa</li>
+<li>Mostra um novo prompt para mostrar que está pronto para receber mais comandos</li>
+</ol>
+<p>Agora podemos descobrir aonde estamos (em qual diretório do sistema de arquivos) com o comando <code>pwd</code> (<em>print working directory</em>). Daqui em diante os termos “diretório de trabalho” ou “diretório atual” ou “diretório padrão” se referem sempre à mesma coisa, ou seja, o diretório que o computador assume que queremos executar o comando, a não ser que algum outro seja especificado explicitamente.</p>
+<pre class="sh"><code>pwd</code></pre>
+<p>A resposta para esse comando é <code>/home/fpmayer</code> que é denominado de diretório <em>home</em> de um usuário. Normalmente quando se inicia um terminal, ele começa nesse diretório. Como usuário comum, este é o único diretório ao qual você terá permissão de acesso, ou seja, permissão para criar, modificar ou deletar arquivos e diretórios.</p>
+<!-- colocar figuras -->
+<div class="panel panel-warning">
+<div class="panel-heading">
+Atenção!
+</div>
+<div class="panel-body">
+Note que a barra que divide diretórios no Linux é deitada para a direita (<code>/</code>), ao contrário do Windows que é deitada para a esquerda (<code>\</code>).
+</div>
+</div>
+<p>Agora, para visualizar o conteúdo de um diretório, usamos o comando <code>ls</code> (<em>listing</em>):</p>
+<pre class="sh"><code>ls</code></pre>
+<p>(Note que o seu resultado pode ser diferente dependendo do seu sistema operacional e de customizações).</p>
+<p>O comando <code>ls</code> mostra os nomes dos arquivos e diretórios no diretório atual em ordem alfabetica. Podemos fazer essa saída ficar um pouco mais informativa usando um <strong>argumento adicional ao comando</strong> (também chamado de <em>flag</em>) <code>-F</code>, que diz para o <code>ls</code> adicionar uma barra (<code>/</code>) aos nomes de diretórios:</p>
+<pre class="sh"><code>ls -F</code></pre>
+<p>O comando <code>ls</code> possui muitas opções (<em>flags</em>) para alterar a saída do resultado. Isso é muito comum em diversos comandos shell, e para visualizar as opções podemos digitar</p>
+<pre class="sh"><code>ls --help</code></pre>
+<pre><code>Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --all                  do not ignore entries starting with .
+  -A, --almost-all           do not list implied . and ..
+      --author               with -l, print the author of each file
+  -b, --escape               print C-style escapes for nongraphic characters
+      --block-size=SIZE      scale sizes by SIZE before printing them.  E.g.,
+                               &#39;--block-size=M&#39; prints sizes in units of
+                               1,048,576 bytes.  See SIZE format below.
+  -B, --ignore-backups       do not list implied entries ending with ~
+  -c                         with -lt: sort by, and show, ctime (time of last
+                               modification of file status information)
+                               with -l: show ctime and sort by name
+                               otherwise: sort by ctime, newest first
+  -C                         list entries by columns
+      --color[=WHEN]         colorize the output.  WHEN defaults to &#39;always&#39;
+                               or can be &#39;never&#39; or &#39;auto&#39;.  More info below
+  -d, --directory            list directory entries instead of contents,
+                               and do not dereference symbolic links
+  -D, --dired                generate output designed for Emacs&#39; dired mode
+  -f                         do not sort, enable -aU, disable -ls --color
+  -F, --classify             append indicator (one of */=&gt;@|) to entries
+      --file-type            likewise, except do not append &#39;*&#39;
+      --format=WORD          across -x, commas -m, horizontal -x, long -l,
+                               single-column -1, verbose -l, vertical -C
+      --full-time            like -l --time-style=full-iso
+  -g                         like -l, but do not list owner
+      --group-directories-first
+                             group directories before files.
+                               augment with a --sort option, but any
+                               use of --sort=none (-U) disables grouping
+  -G, --no-group             in a long listing, don&#39;t print group names
+  -h, --human-readable       with -l, print sizes in human readable format
+                               (e.g., 1K 234M 2G)
+      --si                   likewise, but use powers of 1000 not 1024
+  -H, --dereference-command-line
+                             follow symbolic links listed on the command line
+      --dereference-command-line-symlink-to-dir
+                             follow each command line symbolic link
+                             that points to a directory
+      --hide=PATTERN         do not list implied entries matching shell PATTERN
+                               (overridden by -a or -A)
+      --indicator-style=WORD  append indicator with style WORD to entry names:
+                               none (default), slash (-p),
+                               file-type (--file-type), classify (-F)
+  -i, --inode                print the index number of each file
+  -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
+  -k, --kibibytes            use 1024-byte blocks
+  -l                         use a long listing format
+  -L, --dereference          when showing file information for a symbolic
+                               link, show information for the file the link
+                               references rather than for the link itself
+  -m                         fill width with a comma separated list of entries
+  -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
+  -N, --literal              print raw entry names (don&#39;t treat e.g. control
+                               characters specially)
+  -o                         like -l, but do not list group information
+  -p, --indicator-style=slash
+                             append / indicator to directories
+  -q, --hide-control-chars   print ? instead of non graphic characters
+      --show-control-chars   show non graphic characters as-is (default
+                             unless program is &#39;ls&#39; and output is a terminal)
+  -Q, --quote-name           enclose entry names in double quotes
+      --quoting-style=WORD   use quoting style WORD for entry names:
+                               literal, locale, shell, shell-always, c, escape
+  -r, --reverse              reverse order while sorting
+  -R, --recursive            list subdirectories recursively
+  -s, --size                 print the allocated size of each file, in blocks
+  -S                         sort by file size
+      --sort=WORD            sort by WORD instead of name: none -U,
+                             extension -X, size -S, time -t, version -v
+      --time=WORD            with -l, show time as WORD instead of modification
+                             time: atime -u, access -u, use -u, ctime -c,
+                             or status -c; use specified time as sort key
+                             if --sort=time
+      --time-style=STYLE     with -l, show times using style STYLE:
+                             full-iso, long-iso, iso, locale, +FORMAT.
+                             FORMAT is interpreted like &#39;date&#39;; if FORMAT is
+                             FORMAT1&lt;newline&gt;FORMAT2, FORMAT1 applies to
+                             non-recent files and FORMAT2 to recent files;
+                             if STYLE is prefixed with &#39;posix-&#39;, STYLE
+                             takes effect only outside the POSIX locale
+  -t                         sort by modification time, newest first
+  -T, --tabsize=COLS         assume tab stops at each COLS instead of 8
+  -u                         with -lt: sort by, and show, access time
+                               with -l: show access time and sort by name
+                               otherwise: sort by access time
+  -U                         do not sort; list entries in directory order
+  -v                         natural sort of (version) numbers within text
+  -w, --width=COLS           assume screen width instead of current value
+  -x                         list entries by lines instead of by columns
+  -X                         sort alphabetically by entry extension
+  -Z, --context              print any SELinux security context of each file
+  -1                         list one file per line
+      --help     display this help and exit
+      --version  output version information and exit
+
+SIZE is an integer and optional unit (example: 10M is 10*1024*1024).  Units
+are K, M, G, T, P, E, Z, Y (powers of 1024) or KB, MB, ... (powers of 1000).
+
+Using color to distinguish file types is disabled both by default and
+with --color=never.  With --color=auto, ls emits color codes only when
+standard output is connected to a terminal.  The LS_COLORS environment
+variable can change the settings.  Use the dircolors command to set it.
+
+Exit status:
+ 0  if OK,
+ 1  if minor problems (e.g., cannot access subdirectory),
+ 2  if serious trouble (e.g., cannot access command-line argument).
+
+Report ls bugs to bug-coreutils@gnu.org
+GNU coreutils home page: &lt;http://www.gnu.org/software/coreutils/&gt;
+General help using GNU software: &lt;http://www.gnu.org/gethelp/&gt;
+For complete documentation, run: info coreutils &#39;ls invocation&#39;</code></pre>
+<p>Para mais informações ou detalhes de um comando, você pode acessar um manual através de</p>
+<pre class="sh"><code>man ls</code></pre>
+<p>Você entrará em uma página de documentação mais detalhada e possivelmente com exemplos de uso. Para navegar por essa página, use as setas para baixo e para cime, e para sair e voltar ao terminal digite <code>q</code>.</p>
+<p>No exemplo acima, vimos que todo o conteúdo do diretório atual é composto por <strong>sub-diretórios</strong>, pois todos os nomes contém uma barra no final. Nomes sem a barra seriam arquivos. Nós também podemos usar o <code>ls</code> para mostrar o conteúdo de outros diretórios. Por exemplo, para ver o conteúdo do diretório <code>Documents</code>:</p>
+<pre class="sh"><code>ls -F Documents</code></pre>
+<p>Note que agora aparecem diretórios e também arquivos (os nomes sem a barra no final).</p>
+<p>Como você já deve estar percebendo, o uso do shell é altamente dependente da ideia de que seus arquivos são organizados em um sistema de arquivos hierárquico. Organizar arquivos e diretórios desta forma ajuda-nos a organizar nosso trabalho. É possível colocar centenas de arquivos em nossa pasta pessoal, assim como é possível empilhar centenas de papéis na sua mesa, mas não é uma estratégia adequada.</p>
+</div>
+<div id="referencias" class="section level1">
+<h1>Referências</h1>
+<ul>
+<li><a href="http://software-carpentry.org">Software Carpentry Foundation</a>. <a href="http://swcarpentry.github.io/shell-novice">The Unix Shell</a>.</li>
+</ul>
+</div>
+
+<center>
+  <hr width="100%" size="3px">
+  <p> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR">
+      <img src="img/CC_by-nc-sa_80x15.png" alt="Licença Creative Commons 4.0"> </a>
+  </p>
+  <p> <font size="2"> Este conteúdo
+      está disponível por meio da Licença Creative Commons 4.0 </font>
+  </p>
+</center>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

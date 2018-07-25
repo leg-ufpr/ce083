@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Histórico das aulas do curso</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-102804671-2', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">CE083</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="aulas.html">Aulas</a>
+</li>
+<li>
+  <a href="referencias.html">Referências</a>
+</li>
+<li>
+  <a href="recursos.html">Recursos</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Materiais
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Configurações iniciais</li>
+    <li>
+      <a href="c3sl-sistemas.html">Uso dos sistemas do C3SL [HTML]</a>
+    </li>
+    <li>
+      <a href="http://fernandomayer.github.io/linux-intro">Introdução ao uso do Linux [HTML,slides]</a>
+    </li>
+    <li>
+      <a href="shell-linux.html">Introdução ao Shell Linux [HTML]</a>
+    </li>
+    <li>
+      <a href="R-instalacao.html">Guia de instalação do R [HTML]</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Exercícios</li>
+    <li>
+      <a href="exercicios/ex_objetos.pdf">Comandos básicos e classes de objetos [PDF]</a>
+    </li>
+    <li>
+      <a href="exercicios/ex_AED1.R">Análise exploratória de dados 1 [R]</a>
+    </li>
+    <li>
+      <a href="exercicios/ex_AED2.R">Análise exploratória de dados 2 [R]</a>
+    </li>
+    <li>
+      <a href="exercicios/ex_inferencia.Rmd">Inferência e regressão [Rmd]</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/leg-ufpr/ce083">
+    <span class="fa fa-github fa-lg"></span>
+     
+    GitHub
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Histórico das aulas do curso</h1>
+
+</div>
+
+
+<p>Abaixo o histórico de atividades realizadas em classe e atividades extra classe aplicadas.</p>
+<ul>
+<li><strong>01/08</strong>: Apresentação da disciplina. Ler <a href="c3sl-sistemas.html">Uso dos sistemas do C3SL</a>.</li>
+<li><strong>03/08</strong>: Sem aula - recepção aos calouros.</li>
+<li><strong>08/08</strong>: Introdução ao uso do Linux. Ver comandos básicos nos <a href="http://fernandomayer.github.io/linux-intro">slides</a>.</li>
+<li><strong>10/08</strong>: Comandos e exercícios do Linux. <a href="http://fernandomayer.github.io/linux-intro">Slides</a>.</li>
+<li><strong>15/08</strong>: Computação científica e interação com o R. Ver <a href="computacao-cientifica.html">material</a>.</li>
+<li><strong>17/08</strong>: Funções, argumentos e busca de ajuda no R. Ver <a href="objetos-classes.html">material</a>.</li>
+<li><strong>22/08</strong>: Criando funções, definição de objetos. Classes de objetos. Vetores e sequências de números. Ver <a href="objetos-classes.html">material</a>.</li>
+<li><strong>24/08</strong>: <strong>Não haverá aula</strong>. Fazer os exercícios de <a href="exercicios/ex_objetos.pdf">comandos básicos e classes de objetos</a>.</li>
+<li><strong>29/08</strong>: Regra da reciclagem. Atributos de vetores. Outras classes: caracter, lógico, fator. Valores perdidos e especiais. Ver <a href="objetos-classes.html">material</a>.</li>
+<li><strong>31/08</strong>: Matrizes, listas e data frames. Nomes como atributos. Ver <a href="objetos-classes.html">material</a>.</li>
+<li><strong>05/09</strong>: Indexação e substituição em vetores. Ver <a href="indexacao_e_selecao.html">material</a>.</li>
+<li><strong>07/09</strong>: Feriado.</li>
+<li><strong>12/09</strong>: Indexação de matrizes, listas e data frames. Seleção condicional em vetores. Ver <a href="indexacao_e_selecao.html">material</a>.</li>
+<li><strong>14/09</strong>: A função <code>which()</code>. Seleção condicional em data frames. Ver <a href="indexacao_e_selecao.html">material</a>.</li>
+<li><strong>19/09</strong>: <strong>Prova 1</strong>.</li>
+<li><strong>21/09</strong>: Entrada de dados. Entrada via teclado. Criando arquivos de texto (<code>.csv</code>) a partir de planilhas eletrônicas. Importação de dados em arquivos de texto com <code>read.table()</code>. Importação de arquivos do Excel (binários) com <code>read.xls()</code> do pacote <code>gdata</code>. Ver <a href="entrada-dados.html">material</a>.</li>
+<li><strong>26/09</strong>: Saída de dados. Exportando para arquivos de texto com <code>write.table()</code>. Exportando para formatos textual e binário. Ver <a href="entrada-dados.html">material</a>.</li>
+<li><strong>28/09</strong>: Análise exploratória de dados. Conhecendo um conjunto de dados. Tabelas de frequência e gráficos para variáveis qualitativas. Ver <a href="analise-exploratoria.html">material</a>.</li>
+<li><strong>03/10</strong>: Não haverá aula devido ao <a href="http://www.siepe.ufpr.br">SIEPE</a>.</li>
+<li><strong>05/10</strong>: Tabelas de frequência e gráficos para variáveis quantitativas. Ver <a href="analise-exploratoria.html">material</a>.</li>
+<li><strong>10/10</strong>: Quantis, boxplots e subsets dentro de gráficos. Ver <a href="analise-exploratoria.html">material</a> e <a href="scripts/script_gapminder.R">script</a>.</li>
+<li><strong>12/10</strong>: Feriado.</li>
+<li><strong>17/10</strong>: Resolvendo problemas de vetores com <code>NA</code>s. Gráficos usando o pacote <strong>lattice</strong>. A família de funções <code>*apply()</code>: <code>apply()</code>, <code>sapply()</code>, <code>lapply()</code>, <code>tapply()</code>, <code>aggregate()</code>. Uso avançado com a função <code>ddply()</code> do pacote <strong>plyr</strong>. Ver <a href="analise-exploratoria.html">material</a> e <a href="scripts/script_gapminder.R">script</a>.</li>
+<li><strong>19/10</strong>: Exercícios de análise exploratória de dados feito em sala. Ver <a href="exercicios/ex_AED2.R">script</a> e <a href="exercicios/ex_AED2_GB.R">gabarito</a>.</li>
+<li><strong>24/10</strong>: Programação. Estrutura de repetição <code>for()</code>. Estrutura de seleção <code>if()</code>. Funções vetorizadas: <code>apply()</code> e <code>ifelse()</code>. Ver <a href="programacao.html">material</a>.</li>
+<li><strong>26/10</strong>: Distribuições de probabilidade: Normal e binomial. Ver <a href="probabilidade.html">material</a> e <a href="scripts/probabilidade.R">script</a>.</li>
+<li><strong>31/10</strong>: Não haverá aula.</li>
+<li><strong>02/11</strong>: Feriado.</li>
+<li><strong>07/11</strong>: <strong>Prova 2</strong>.</li>
+<li><strong>09/11</strong>: Resolução da prova 2. <a href="scripts/script_P2_2017-11-07_GB.R">Gabarito</a>. <a href="dados/dados_atum.csv">Dados</a>.</li>
+<li><strong>14/11</strong>: Introdução ao uso do <span class="math inline">\(\LaTeX\)</span>. Ver <a href="misc/Introducao_ao_Latex_ESALQ-USP.pdf">slides</a>. Documento <code>.tex</code> criado em aula: <a href="misc/aula_latex.tex">aula_latex.tex</a>. Usar ShareLaTeX do C3SL <a href="https://sharelatex.c3sl.ufpr.br" class="uri">https://sharelatex.c3sl.ufpr.br</a> ou o próprio RStudio.</li>
+<li><strong>16/11</strong>: Criando tabelas no <span class="math inline">\(\LaTeX\)</span>. Equações matemáticas. Referências cruzadas. Referências bibliográficas (usar arquivo <a href="misc/referencias.bib">referencias.bib</a>). Ver <a href="misc/Introducao_ao_Latex_ESALQ-USP.pdf">slides</a>.</li>
+<li><strong>21/11</strong>: Documentos dinâmicos com <strong>knitr</strong> (arquivo <code>.Rnw</code>) e <strong>rmarkdown</strong> (arquivo <code>.Rmd</code>).
+<ul>
+<li>Instalar os pacotes do R (<code>knitr</code>, <code>xtable</code>, <code>rmarkdown</code>):</li>
+<li><code>install.packages(c(&quot;knitr&quot;, &quot;xtable&quot;, &quot;rmarkdown&quot;))</code></li>
+<li>Arquivos (compilar todos eles no RStudio):</li>
+<li><a href="misc/aula_latex.tex">aula_latex.tex</a>: arquivo LaTeX puro (não dinâmico).</li>
+<li><a href="misc/aula_latex_tex2.Rnw">aula_latex_tex2.Rnw</a>: arquivo LaTeX com <em>chunks</em> (blocos de código) do R (documento dinâmico).</li>
+<li><a href="misc/aula_rmarkdown.Rmd">aula_rmarkdown.Rmd</a>: arquivo escrito em Markdown com <em>chunks</em> do R (dinâmico).</li>
+<li>Material:</li>
+<li><a href="http://cursos.leg.ufpr.br/prr/capLitProg.html">Literate programming</a></li>
+<li><a href="http://cursos.leg.ufpr.br/prr/capMarkdown.html">Markdown com Pandoc</a></li>
+<li><a href="http://cursos.leg.ufpr.br/prr/capDocDin.html">Documentos dinâmicos no R</a></li>
+<li>Site do <a href="https://yihui.name/knitr/">knitr</a> e <a href="https://yihui.name/knitr/options/">opções de <em>chunks</em></a> para documentos <code>.Rnw</code> e <code>.Rmd</code>.</li>
+<li>Site do <a href="http://rmarkdown.rstudio.com/">R Markdown</a>. Veja todos os <a href="http://rmarkdown.rstudio.com/formats.html">formatos</a> disponíveis.</li>
+</ul></li>
+<li><strong>23/11</strong>: Diferentes documentos com <a href="http://rmarkdown.rstudio.com">Rmarkdown</a>.
+<ul>
+<li>Arquivos:</li>
+<li><a href="misc/exemplo_simples.Rmd">exemplo_simples.Rmd</a></li>
+<li><a href="misc/exemplo_reg.Rmd">exemplo_reg.Rmd</a></li>
+<li>Arquivo e material sobre inferência e regressão:</li>
+<li><a href="misc/inferencia_regressao.Rmd">inferencia_regressao.Rmd</a></li>
+</ul></li>
+<li><strong>28/11</strong>: Inferência (intervalo de confiança e teste de hipótese para uma amostra) e regressão. Ver <a href="misc/inferencia_regressao_GB.Rmd">inferencia_regressao_GB.Rmd</a>.</li>
+<li><strong>30/11</strong>: <strong>Prova 3</strong>. <a href="misc/ce083_P3_2017-2_GB.Rmd">Gabarito</a>.</li>
+<li><strong>14/12</strong>: <strong>Exame final</strong>. <a href="misc/ce083_EXAME_GB.Rmd">Exame</a> do ano anterior.</li>
+</ul>
+<div id="exercicios" class="section level2">
+<h2>Exercícios</h2>
+<ul>
+<li><a href="exercicios/ex_objetos.pdf">Exercícios de comandos básicos e classes de objetos</a>. <a href="exercicios/ex_objetos_GABARITO.R">Gabarito</a> (script).</li>
+<li><a href="scripts/objetos-classes-exercicios.R">Resolução</a> dos exercícios da página <a href="objetos-classes.html">Funções, objetos e classes</a>.</li>
+<li><a href="scripts/indexacao_e_selecao-exercicios.R">Resolução</a> dos exercícios da página <a href="indexacao_e_selecao.html">Indexação e seleção condicional</a>.</li>
+<li><a href="scripts/entrada-dados-exercicios.R">Resolução</a> dos exercícios da página <a href="entrada-dados.html">Entrada e saída de dados</a>.</li>
+<li><a href="scripts/analise-exploratoria-exercicios.R">Resolução</a> dos exercícios da página <a href="analise-exploratoria.html">Análise exploratória de dados</a>.</li>
+<li>Exercício de análise exploratória 1: avaliação de alguns itens de diversos carros. Resolver seguindo o <a href="exercicios/ex_AED1.R">script</a>, e usando estes <a href="http://leg.ufpr.br/~fernandomayer/data/aval_carros_nota.txt">dados</a>. <a href="exercicios/ex_AED1_GB.R">Gabarito</a> (script).</li>
+<li>Exercício de análise exploratória 2: preços de aluguel de apartamentos e casas na cidade de Munique (Alemanha). Resolver seguindo o <a href="exercicios/ex_AED2.R">script</a>, e usando estes <a href="http://leg.ufpr.br/~fernandomayer/data/dados_aluguel.csv">dados</a>. <a href="exercicios/ex_AED2_GB.R">Gabarito</a> (script).</li>
+</ul>
+</div>
+<div id="notas" class="section level2">
+<h2>Notas</h2>
+<p>As notas estão disponíveis <a href="notas.html">nesta página</a>.</p>
+</div>
+
+<center>
+  <hr width="100%" size="3px">
+  <p> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR">
+      <img src="img/CC_by-nc-sa_80x15.png" alt="Licença Creative Commons 4.0"> </a>
+  </p>
+  <p> <font size="2"> Este conteúdo
+      está disponível por meio da Licença Creative Commons 4.0 </font>
+  </p>
+</center>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Notas</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-102804671-2', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">CE083</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="aulas.html">Aulas</a>
+</li>
+<li>
+  <a href="referencias.html">Referências</a>
+</li>
+<li>
+  <a href="recursos.html">Recursos</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Materiais
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Configurações iniciais</li>
+    <li>
+      <a href="c3sl-sistemas.html">Uso dos sistemas do C3SL [HTML]</a>
+    </li>
+    <li>
+      <a href="http://fernandomayer.github.io/linux-intro">Introdução ao uso do Linux [HTML,slides]</a>
+    </li>
+    <li>
+      <a href="shell-linux.html">Introdução ao Shell Linux [HTML]</a>
+    </li>
+    <li>
+      <a href="R-instalacao.html">Guia de instalação do R [HTML]</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Exercícios</li>
+    <li>
+      <a href="exercicios/ex_objetos.pdf">Comandos básicos e classes de objetos [PDF]</a>
+    </li>
+    <li>
+      <a href="exercicios/ex_AED1.R">Análise exploratória de dados 1 [R]</a>
+    </li>
+    <li>
+      <a href="exercicios/ex_AED2.R">Análise exploratória de dados 2 [R]</a>
+    </li>
+    <li>
+      <a href="exercicios/ex_inferencia.Rmd">Inferência e regressão [Rmd]</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/leg-ufpr/ce083">
+    <span class="fa fa-github fa-lg"></span>
+     
+    GitHub
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Notas</h1>
+
+</div>
+
+
+<div id="histograma-e-box-plot-geral" class="section level2">
+<h2>Histograma e box plot geral</h2>
+<p><img src="figures/hist-geral-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>Resumo dos cinco números, média, desvio-padrão, e número de provas não realizadas (NA):</p>
+<pre><code>  Min    Q1    Q2    Q3   Max Média     s   NAs 
+ 2.00  4.70  6.50  7.83 10.00  6.51  1.89 46.00 </code></pre>
+</div>
+<div id="resumos-por-prova" class="section level2">
+<h2>Resumos por prova</h2>
+<p>Box plot de cada prova</p>
+<p><img src="figures/boxplot-provas-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>Resumo dos cinco números, média, desvio-padrão, e número de provas não realizadas (NA):</p>
+<pre><code>         P1    P2    P3
+Min    2.00  2.83  2.80
+Q1     5.65  5.83  4.50
+Q2     7.30  6.50  6.00
+Q3     8.20  7.67  7.70
+Max   10.00 10.00 10.00
+Média  6.84  6.48  6.15
+s      1.85  1.75  2.03
+NAs    8.00 18.00 20.00</code></pre>
+</div>
+<div id="notas-individuais" class="section level2">
+<h2>Notas individuais</h2>
+<p>Na tabela abaixo estão as notas das 3 provas realizadas. A frequência (<code>F</code>) é o percentual de presença.</p>
+<p>A média (<code>M</code>) foi calculada com estas 3 notas, e já <strong>arredondada para cima</strong> nos seguintes casos:</p>
+<ul>
+<li>Médias finais maiores ou iguais a 6,5 e menores do que 7,0 foram arredondadas para 7,0, SE a frequência do aluno foi maior ou igual a 75%.</li>
+<li>Médias finais maiores ou iguais a 3,5 e menores do que 4,0 foram arredondadas para 4,0, SE a frequência do aluno foi maior ou igual a 75%.</li>
+</ul>
+<p><strong>Observação</strong>: a frequência só foi utilizada aqui para critério de arredondamento de nota. Mesmo que o aluno tenha frequência abaixo de 75%, é permitido fazer o exame.</p>
+<p>A coluna de situação (<code>S</code>) indica se o aluno foi aprovado (<code>Ap</code>), ficou em exame (<code>Ex</code>), ou foi reprovado (<code>Re</code>).</p>
+<!-- Número de alunos em cada situação: -->
+<!-- Gráfico de barras com os percentuais por situação: -->
+<p><strong>Após o exame</strong>: as notas dos exames estão na coluna <code>E</code>. A média final (<code>MF</code>) é a mesma para quem não fez exame, e é a média entre a média final (<code>M</code>) e a nota do exame (<code>E</code>) para quem fez exame. A média final arredondada (<code>MFA</code>) é a nota que será lançada no sistema. A coluna <code>SF</code> mostra a situação final dos alunos após o exame.</p>
+<pre class="r"><code>## Mostra tabela
+kable(notas2, align = &quot;c&quot;, digits = 2)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Matrícula</th>
+<th align="center">P1</th>
+<th align="center">P2</th>
+<th align="center">P3</th>
+<th align="center">M</th>
+<th align="center">F</th>
+<th align="center">S</th>
+<th align="center">E</th>
+<th align="center">MF</th>
+<th align="center">MFA</th>
+<th align="center">SF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">20137594</td>
+<td align="center">6.0</td>
+<td align="center">3.33</td>
+<td align="center">4.2</td>
+<td align="center">4.51</td>
+<td align="center">86</td>
+<td align="center">Ex</td>
+<td align="center">6.4</td>
+<td align="center">5.46</td>
+<td align="center">55</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20140361</td>
+<td align="center">9.3</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">3.10</td>
+<td align="center">59</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">3.10</td>
+<td align="center">31</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20159322</td>
+<td align="center">7.0</td>
+<td align="center">6.50</td>
+<td align="center">4.6</td>
+<td align="center">6.03</td>
+<td align="center">76</td>
+<td align="center">Ex</td>
+<td align="center">5.6</td>
+<td align="center">5.81</td>
+<td align="center">59</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20159350</td>
+<td align="center">5.0</td>
+<td align="center">4.50</td>
+<td align="center">NA</td>
+<td align="center">3.17</td>
+<td align="center">100</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">3.17</td>
+<td align="center">32</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20159417</td>
+<td align="center">4.0</td>
+<td align="center">4.50</td>
+<td align="center">3.4</td>
+<td align="center">4.00</td>
+<td align="center">90</td>
+<td align="center">Ex</td>
+<td align="center">2.8</td>
+<td align="center">3.40</td>
+<td align="center">34</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20159775</td>
+<td align="center">7.5</td>
+<td align="center">4.67</td>
+<td align="center">4.6</td>
+<td align="center">5.59</td>
+<td align="center">86</td>
+<td align="center">Ex</td>
+<td align="center">7.2</td>
+<td align="center">6.39</td>
+<td align="center">64</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20159858</td>
+<td align="center">6.5</td>
+<td align="center">4.67</td>
+<td align="center">4.6</td>
+<td align="center">5.26</td>
+<td align="center">79</td>
+<td align="center">Ex</td>
+<td align="center">4.6</td>
+<td align="center">4.93</td>
+<td align="center">50</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20159999</td>
+<td align="center">4.4</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">1.47</td>
+<td align="center">75</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">1.47</td>
+<td align="center">15</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20160205</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">45</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20160214</td>
+<td align="center">7.0</td>
+<td align="center">8.17</td>
+<td align="center">7.4</td>
+<td align="center">7.52</td>
+<td align="center">62</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.52</td>
+<td align="center">76</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20160218</td>
+<td align="center">9.0</td>
+<td align="center">8.17</td>
+<td align="center">7.4</td>
+<td align="center">8.19</td>
+<td align="center">97</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">8.19</td>
+<td align="center">82</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20160227</td>
+<td align="center">4.4</td>
+<td align="center">3.33</td>
+<td align="center">4.2</td>
+<td align="center">4.00</td>
+<td align="center">97</td>
+<td align="center">Ex</td>
+<td align="center">3.2</td>
+<td align="center">3.60</td>
+<td align="center">36</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20160228</td>
+<td align="center">3.5</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">1.17</td>
+<td align="center">48</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">1.17</td>
+<td align="center">12</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20160233</td>
+<td align="center">7.0</td>
+<td align="center">7.50</td>
+<td align="center">5.6</td>
+<td align="center">7.00</td>
+<td align="center">97</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20160304</td>
+<td align="center">3.7</td>
+<td align="center">6.33</td>
+<td align="center">4.4</td>
+<td align="center">4.81</td>
+<td align="center">97</td>
+<td align="center">Ex</td>
+<td align="center">3.2</td>
+<td align="center">4.00</td>
+<td align="center">40</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20165678</td>
+<td align="center">9.0</td>
+<td align="center">9.83</td>
+<td align="center">9.6</td>
+<td align="center">9.48</td>
+<td align="center">79</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">9.48</td>
+<td align="center">95</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20165728</td>
+<td align="center">6.4</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">2.13</td>
+<td align="center">56</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">2.13</td>
+<td align="center">22</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20165742</td>
+<td align="center">5.8</td>
+<td align="center">2.83</td>
+<td align="center">7.6</td>
+<td align="center">5.41</td>
+<td align="center">90</td>
+<td align="center">Ex</td>
+<td align="center">3.6</td>
+<td align="center">4.50</td>
+<td align="center">45</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170015</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">29</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170239</td>
+<td align="center">2.0</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.67</td>
+<td align="center">41</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">0.67</td>
+<td align="center">7</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170299</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">52</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170300</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">41</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170370</td>
+<td align="center">6.4</td>
+<td align="center">6.50</td>
+<td align="center">9.4</td>
+<td align="center">7.43</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.43</td>
+<td align="center">75</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170371</td>
+<td align="center">10.0</td>
+<td align="center">8.00</td>
+<td align="center">5.4</td>
+<td align="center">7.80</td>
+<td align="center">97</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.80</td>
+<td align="center">78</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170372</td>
+<td align="center">4.4</td>
+<td align="center">5.83</td>
+<td align="center">3.8</td>
+<td align="center">4.68</td>
+<td align="center">93</td>
+<td align="center">Ex</td>
+<td align="center">0.0</td>
+<td align="center">2.34</td>
+<td align="center">24</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170374</td>
+<td align="center">6.7</td>
+<td align="center">6.33</td>
+<td align="center">3.4</td>
+<td align="center">5.48</td>
+<td align="center">83</td>
+<td align="center">Ex</td>
+<td align="center">4.6</td>
+<td align="center">5.04</td>
+<td align="center">51</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170375</td>
+<td align="center">6.0</td>
+<td align="center">5.83</td>
+<td align="center">3.8</td>
+<td align="center">5.21</td>
+<td align="center">100</td>
+<td align="center">Ex</td>
+<td align="center">4.7</td>
+<td align="center">4.96</td>
+<td align="center">50</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170376</td>
+<td align="center">4.2</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">1.40</td>
+<td align="center">75</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">1.40</td>
+<td align="center">14</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170377</td>
+<td align="center">8.5</td>
+<td align="center">6.50</td>
+<td align="center">4.8</td>
+<td align="center">7.00</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170378</td>
+<td align="center">7.5</td>
+<td align="center">4.50</td>
+<td align="center">4.6</td>
+<td align="center">5.53</td>
+<td align="center">97</td>
+<td align="center">Ex</td>
+<td align="center">0.0</td>
+<td align="center">2.77</td>
+<td align="center">28</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170379</td>
+<td align="center">7.9</td>
+<td align="center">7.50</td>
+<td align="center">5.6</td>
+<td align="center">7.00</td>
+<td align="center">90</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170380</td>
+<td align="center">7.5</td>
+<td align="center">6.33</td>
+<td align="center">3.8</td>
+<td align="center">5.88</td>
+<td align="center">100</td>
+<td align="center">Ex</td>
+<td align="center">4.4</td>
+<td align="center">5.14</td>
+<td align="center">52</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170381</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170382</td>
+<td align="center">6.3</td>
+<td align="center">7.17</td>
+<td align="center">6.4</td>
+<td align="center">7.00</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170383</td>
+<td align="center">4.9</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">1.63</td>
+<td align="center">75</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">1.63</td>
+<td align="center">17</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170384</td>
+<td align="center">7.8</td>
+<td align="center">6.50</td>
+<td align="center">4.8</td>
+<td align="center">6.37</td>
+<td align="center">97</td>
+<td align="center">Ex</td>
+<td align="center">6.0</td>
+<td align="center">6.19</td>
+<td align="center">62</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170385</td>
+<td align="center">7.9</td>
+<td align="center">6.33</td>
+<td align="center">4.0</td>
+<td align="center">6.08</td>
+<td align="center">100</td>
+<td align="center">Ex</td>
+<td align="center">5.6</td>
+<td align="center">5.84</td>
+<td align="center">59</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170386</td>
+<td align="center">7.5</td>
+<td align="center">7.50</td>
+<td align="center">4.8</td>
+<td align="center">7.00</td>
+<td align="center">97</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170387</td>
+<td align="center">8.4</td>
+<td align="center">6.50</td>
+<td align="center">9.4</td>
+<td align="center">8.10</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">8.10</td>
+<td align="center">81</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170388</td>
+<td align="center">7.4</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">2.47</td>
+<td align="center">75</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">2.47</td>
+<td align="center">25</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170389</td>
+<td align="center">3.4</td>
+<td align="center">6.33</td>
+<td align="center">6.6</td>
+<td align="center">5.44</td>
+<td align="center">97</td>
+<td align="center">Ex</td>
+<td align="center">0.0</td>
+<td align="center">2.72</td>
+<td align="center">28</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170392</td>
+<td align="center">8.5</td>
+<td align="center">7.67</td>
+<td align="center">8.2</td>
+<td align="center">8.12</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">8.12</td>
+<td align="center">82</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170393</td>
+<td align="center">6.9</td>
+<td align="center">6.33</td>
+<td align="center">4.0</td>
+<td align="center">5.74</td>
+<td align="center">100</td>
+<td align="center">Ex</td>
+<td align="center">4.8</td>
+<td align="center">5.27</td>
+<td align="center">53</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170394</td>
+<td align="center">9.5</td>
+<td align="center">10.00</td>
+<td align="center">10.0</td>
+<td align="center">9.83</td>
+<td align="center">97</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">9.83</td>
+<td align="center">99</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170395</td>
+<td align="center">10.0</td>
+<td align="center">8.50</td>
+<td align="center">7.2</td>
+<td align="center">8.57</td>
+<td align="center">97</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">8.57</td>
+<td align="center">86</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170396</td>
+<td align="center">7.0</td>
+<td align="center">5.83</td>
+<td align="center">6.6</td>
+<td align="center">6.48</td>
+<td align="center">90</td>
+<td align="center">Ex</td>
+<td align="center">10.0</td>
+<td align="center">8.24</td>
+<td align="center">83</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170400</td>
+<td align="center">8.0</td>
+<td align="center">4.50</td>
+<td align="center">5.8</td>
+<td align="center">6.10</td>
+<td align="center">97</td>
+<td align="center">Ex</td>
+<td align="center">6.0</td>
+<td align="center">6.05</td>
+<td align="center">61</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170404</td>
+<td align="center">4.0</td>
+<td align="center">8.50</td>
+<td align="center">7.2</td>
+<td align="center">7.00</td>
+<td align="center">90</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170407</td>
+<td align="center">7.9</td>
+<td align="center">7.83</td>
+<td align="center">9.0</td>
+<td align="center">8.24</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">8.24</td>
+<td align="center">83</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170409</td>
+<td align="center">8.5</td>
+<td align="center">7.83</td>
+<td align="center">9.0</td>
+<td align="center">8.44</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">8.44</td>
+<td align="center">85</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170410</td>
+<td align="center">7.5</td>
+<td align="center">3.83</td>
+<td align="center">2.8</td>
+<td align="center">4.71</td>
+<td align="center">90</td>
+<td align="center">Ex</td>
+<td align="center">2.4</td>
+<td align="center">3.55</td>
+<td align="center">36</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170411</td>
+<td align="center">8.5</td>
+<td align="center">6.50</td>
+<td align="center">3.8</td>
+<td align="center">6.27</td>
+<td align="center">90</td>
+<td align="center">Ex</td>
+<td align="center">8.8</td>
+<td align="center">7.54</td>
+<td align="center">76</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170412</td>
+<td align="center">7.0</td>
+<td align="center">7.33</td>
+<td align="center">6.4</td>
+<td align="center">7.00</td>
+<td align="center">90</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170413</td>
+<td align="center">9.0</td>
+<td align="center">4.50</td>
+<td align="center">6.4</td>
+<td align="center">7.00</td>
+<td align="center">97</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170414</td>
+<td align="center">8.5</td>
+<td align="center">7.33</td>
+<td align="center">6.4</td>
+<td align="center">7.41</td>
+<td align="center">48</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.41</td>
+<td align="center">75</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170415</td>
+<td align="center">7.2</td>
+<td align="center">7.67</td>
+<td align="center">8.4</td>
+<td align="center">7.76</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.76</td>
+<td align="center">78</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170417</td>
+<td align="center">9.9</td>
+<td align="center">8.00</td>
+<td align="center">7.8</td>
+<td align="center">8.57</td>
+<td align="center">97</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">8.57</td>
+<td align="center">86</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170418</td>
+<td align="center">8.0</td>
+<td align="center">7.50</td>
+<td align="center">4.8</td>
+<td align="center">7.00</td>
+<td align="center">86</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170420</td>
+<td align="center">7.5</td>
+<td align="center">6.00</td>
+<td align="center">6.2</td>
+<td align="center">7.00</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170421</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170425</td>
+<td align="center">4.7</td>
+<td align="center">2.83</td>
+<td align="center">NA</td>
+<td align="center">2.51</td>
+<td align="center">83</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">2.51</td>
+<td align="center">26</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170426</td>
+<td align="center">4.4</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">1.47</td>
+<td align="center">66</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">1.47</td>
+<td align="center">15</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170428</td>
+<td align="center">6.4</td>
+<td align="center">7.67</td>
+<td align="center">8.4</td>
+<td align="center">7.49</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.49</td>
+<td align="center">75</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170429</td>
+<td align="center">9.0</td>
+<td align="center">5.83</td>
+<td align="center">5.8</td>
+<td align="center">7.00</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170430</td>
+<td align="center">7.4</td>
+<td align="center">10.00</td>
+<td align="center">10.0</td>
+<td align="center">9.13</td>
+<td align="center">90</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">9.13</td>
+<td align="center">92</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170432</td>
+<td align="center">6.5</td>
+<td align="center">6.00</td>
+<td align="center">6.2</td>
+<td align="center">6.23</td>
+<td align="center">86</td>
+<td align="center">Ex</td>
+<td align="center">1.0</td>
+<td align="center">3.62</td>
+<td align="center">37</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170435</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">38</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170453</td>
+<td align="center">7.5</td>
+<td align="center">7.67</td>
+<td align="center">8.2</td>
+<td align="center">7.79</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.79</td>
+<td align="center">78</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20170489</td>
+<td align="center">3.8</td>
+<td align="center">6.33</td>
+<td align="center">5.4</td>
+<td align="center">5.18</td>
+<td align="center">97</td>
+<td align="center">Ex</td>
+<td align="center">3.2</td>
+<td align="center">4.19</td>
+<td align="center">42</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20170492</td>
+<td align="center">4.4</td>
+<td align="center">3.83</td>
+<td align="center">2.8</td>
+<td align="center">4.00</td>
+<td align="center">93</td>
+<td align="center">Ex</td>
+<td align="center">0.0</td>
+<td align="center">2.00</td>
+<td align="center">20</td>
+<td align="center">Re</td>
+</tr>
+<tr class="odd">
+<td align="center">20170496</td>
+<td align="center">7.5</td>
+<td align="center">7.17</td>
+<td align="center">7.8</td>
+<td align="center">7.49</td>
+<td align="center">100</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.49</td>
+<td align="center">75</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="even">
+<td align="center">20170498</td>
+<td align="center">5.5</td>
+<td align="center">6.33</td>
+<td align="center">4.4</td>
+<td align="center">5.41</td>
+<td align="center">97</td>
+<td align="center">Ex</td>
+<td align="center">5.4</td>
+<td align="center">5.41</td>
+<td align="center">55</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20171126</td>
+<td align="center">8.4</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">2.80</td>
+<td align="center">79</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">2.80</td>
+<td align="center">28</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20171144</td>
+<td align="center">8.4</td>
+<td align="center">9.83</td>
+<td align="center">9.6</td>
+<td align="center">9.28</td>
+<td align="center">86</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">9.28</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+</tr>
+<tr class="odd">
+<td align="center">20171611</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">29</td>
+<td align="center">Re</td>
+<td align="center">NA</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">Re</td>
+</tr>
+<tr class="even">
+<td align="center">20176432</td>
+<td align="center">7.5</td>
+<td align="center">4.50</td>
+<td align="center">7.6</td>
+<td align="center">7.00</td>
+<td align="center">93</td>
+<td align="center">Ap</td>
+<td align="center">NA</td>
+<td align="center">7.00</td>
+<td align="center">70</td>
+<td align="center">Ap</td>
+</tr>
+</tbody>
+</table>
+<p>Número de alunos em cada situação:</p>
+<ul>
+<li>Antes do exame</li>
+</ul>
+<pre class="r"><code>addmargins(table(notas2$S))</code></pre>
+<pre><code>
+ Ap  Ex  Re Sum 
+ 31  25  20  76 </code></pre>
+<ul>
+<li>Após o exame</li>
+</ul>
+<pre class="r"><code>addmargins(table(notas2$SF))</code></pre>
+<pre><code>
+ Ap  Re Sum 
+ 45  31  76 </code></pre>
+<p>Gráfico de barras com os percentuais por situação:</p>
+<pre class="r"><code>par(mfrow = c(1, 2))
+barplot(prop.table(table(notas2$S))*100,
+        xlab = &quot;Situação&quot;, ylab = &quot;Frequência (%)&quot;,
+        main = &quot;Antes do exame&quot;)
+barplot(prop.table(table(notas2$SF))*100,
+        xlab = &quot;Situação&quot;, ylab = &quot;Frequência (%)&quot;,
+        main = &quot;Após o exame&quot;)
+par(mfrow = c(1, 1))</code></pre>
+<p><img src="figures/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+
+<center>
+  <hr width="100%" size="3px">
+  <p> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR">
+      <img src="img/CC_by-nc-sa_80x15.png" alt="Licença Creative Commons 4.0"> </a>
+  </p>
+  <p> <font size="2"> Este conteúdo
+      está disponível por meio da Licença Creative Commons 4.0 </font>
+  </p>
+</center>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

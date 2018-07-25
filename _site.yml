@@ -38,37 +38,15 @@ navbar:
       - text: "Guia de instalação do R [HTML]"
         href: R-instalacao.html
       - text: "----------"
-      - text: "Introdução"
-      - text: "Computação científica e interação com R [HTML]"
-        href: computacao-cientifica.html
-      - text: "Dados"
-      - text: "Funções, objetos e classes [HTML]"
-        href: objetos-classes.html
-      - text: "Indexação e seleção condicional [HTML]"
-        href: indexacao_e_selecao.html
-      - text: "Entrada e saída de dados [HTML]"
-        href: entrada-dados.html
-      - text: "Programando com dados [HTML]"
-        href: programacao.html
-      - text: "Estatística"
-      - text: "Análise exploratória de dados [HTML]"
-        href: analise-exploratoria.html
-      - text: "Distribuições de probabilidade [HTML]"
-        href: probabilidade.html
-      - text: "Inferência e regressão [Rmd]"
-        href: misc/inferencia_regressao_GB.Rmd
-      - text: "----------"
       - text: "Exercícios"
       - text: "Comandos básicos e classes de objetos [PDF]"
         href: exercicios/ex_objetos.pdf
-      - text: "Estatística básica [HTML]"
-        href: ex01_intro.html
       - text: "Análise exploratória de dados 1 [R]"
         href: exercicios/ex_AED1.R
       - text: "Análise exploratória de dados 2 [R]"
         href: exercicios/ex_AED2.R
       - text: "Inferência e regressão [Rmd]"
-        href: exercicios/ex04_inferencia.Rmd
+        href: exercicios/ex_inferencia.Rmd
   right:
     - text: GitHub
       icon: fa-github fa-lg

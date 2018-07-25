@@ -11,7 +11,7 @@ Este repositório contém todo o material de aula e os arquivos
 necessários para gerar a página da disciplina, disponível em:
 http://cursos.leg.ufpr.br/ce083.
 
-O livro-texto da disciplina pode ser consulato em:
+O livro-texto da disciplina pode ser consultado em:
 http://cursos.leg.ufpr.br/ecr.
 
 ### Para gerar o site
